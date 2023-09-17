@@ -7,13 +7,24 @@ pygame.display.set_caption("Лабіринт (твої данні вже у ме
 
 def run():
 
-    hero = Hero(50,50, 75,75)
-
+    hero = Hero(50,50, 75,75, image= hero_list)
+    bot1 = Bot(250, 100, 50, 50, image= bot1_list, orientation= "vertical")
 
     clock = pygame.time.Clock()
     game = True
     while game:
         window.fill((122, 246, 185))
+
+        x,y = 20, 20
+        for i in range(50):
+            pygame.draw.line(window, (255,255,255), (0, y), (1000, y))
+            pygame.draw.line(window, (255,255,255), (x, 0), (x, 700))
+            x += 20
+            y += 20
+
+        
+
+
 
     hero.move(window)
 
@@ -40,7 +51,7 @@ def run():
             if event.key == pygame.K_a:
                 hero.MOVE["LEFT"] = False
 
-                
+          
         clock.tick(60)
         pygame.display.flip()
 
